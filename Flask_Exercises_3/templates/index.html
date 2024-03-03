@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Register for Student Organizations</h2>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="organization">Organization:</label>
+        <select id="organization" name="organization" required>
+            <option value="" disabled selected>Select Organization</option>
+            {% for org in organizations %}
+                <option value="{{ org }}">{{ org }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}
